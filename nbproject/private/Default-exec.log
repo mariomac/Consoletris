@@ -1,0 +1,84 @@
+called: /Library/Developer/CommandLineTools/usr/bin/gcc
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/gcc
+	-c
+	src/main.c
+	-I./better-console
+
+called: /Library/Developer/CommandLineTools/usr/bin/gcc
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/gcc
+	-c
+	src/main.c
+	-I./better-console
+
+called: /Library/Developer/CommandLineTools/usr/bin/clang
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/clang
+	-c
+	src/main.c
+	-I./better-console
+
+called: /Library/Developer/CommandLineTools/usr/bin/clang
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/clang
+	-c
+	src/main.c
+	-I./better-console
+
+called: /Library/Developer/CommandLineTools/usr/bin/gcc
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/gcc
+	-c
+	better-console/betterconsole.c
+
+called: /Library/Developer/CommandLineTools/usr/bin/gcc
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/gcc
+	-c
+	better-console/betterconsole.c
+
+called: /Library/Developer/CommandLineTools/usr/bin/clang
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/clang
+	-c
+	better-console/betterconsole.c
+
+called: /Library/Developer/CommandLineTools/usr/bin/clang
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/clang
+	-c
+	better-console/betterconsole.c
+
+called: /Library/Developer/CommandLineTools/usr/bin/gcc
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/gcc
+	-o
+	bin/consoletris
+	main.o
+	betterconsole.o
+
+called: /Library/Developer/CommandLineTools/usr/bin/gcc
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/gcc
+	-o
+	bin/consoletris
+	main.o
+	betterconsole.o
+
+called: /Library/Developer/CommandLineTools/usr/bin/clang
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/clang
+	-o
+	bin/consoletris
+	main.o
+	betterconsole.o
+
+called: /Library/Developer/CommandLineTools/usr/bin/clang
+	/Users/mmacias/code/consoletris
+	/Library/Developer/CommandLineTools/usr/bin/clang
+	-o
+	bin/consoletris
+	main.o
+	betterconsole.o
+

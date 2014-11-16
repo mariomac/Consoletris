@@ -1,0 +1,4 @@
+gcc -c src/main.c -I./better-console
+gcc -c better-console/betterconsole.c
+mkdir bin
+gcc -o bin/consoletris main.o betterconsole.o

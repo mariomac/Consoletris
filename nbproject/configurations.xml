@@ -6,6 +6,7 @@
     </df>
     <df root="src" name="1">
       <in>main.c</in>
+      <in>piece.h</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -55,6 +56,8 @@
         </cTool>
       </folder>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/piece.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

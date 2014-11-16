@@ -2,7 +2,7 @@ CC = gcc
 BCSRC = better-console
 SRC = src
 OUT = bin
-OBJECTS = main.o betterconsole.o
+OBJECTS = main.o betterconsole.o piece.o
 
 consoletris: $(OBJECTS)
 	mkdir $(OUT)
@@ -13,6 +13,9 @@ main.o:
 
 betterconsole.o:
 	$(CC) -c $(BCSRC)/betterconsole.c
+	
+piece.o:
+	$(CC) -c $(BCSRC)/piece.c
 
 clean:
 	rm -rf $(OUT)

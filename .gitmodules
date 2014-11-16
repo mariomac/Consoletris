@@ -1,0 +1,3 @@
+[submodule "better-console"]
+	path = better-console
+	url = http://github.com/mariomac/better-console.git

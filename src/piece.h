@@ -1,5 +1,7 @@
-#ifndef PIECE_H
-#define	PIECE_H
+#ifndef __PIECE_H
+#define	__PIECE_H
+
+#include "betterconsole.h"
 
 #define MAX_SIDE 4
 
@@ -10,19 +12,37 @@
 #define PIECE_T         4
 #define NUM_PIECES      5
 
+#define COLOR_BAR       RED+BRIGHT
+#define COLOR_SQUARE    BLUE+BRIGHT
+#define COLOR_L         GREEN+BRIGHT
+#define COLOR_REVERSE_L MAGENTA+BRIGHT
+#define COLOR_T         CYAN+BRIGHT
+
 typedef struct {
-    int posX;
-    int posY;
+    int pRow;
+    int pCol;
     int width;
     int height;
     int color;
-    char draw[MAX_SIDE][MAX_SIDE];
+    char blocks[MAX_SIDE][MAX_SIDE];
 } Piece;
 
+/**
+ * 
+ * @param piece
+ * @param exclude ID of piece to be excluded from the results (to avoid repeating twice
+ * the same piece). -1 if you allow repeating pieces
+ * @return the ID of the created piece
+ */
+int create_random_piece(Piece *piece, int exclude);
 
-Piece create_piece(int numPiece);
+/**
+ * 
+ * @param direction direction<0 rotates counterclockwise, direction>=0 rotates clockwise
+ * @param piece
+ */
 
-void rotate_piece(int )
+void draw_piece(Piece *piece);
 
-#endif	/* PIECE_H */
+#endif	/* __PIECE_H */
 

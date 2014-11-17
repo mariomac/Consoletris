@@ -5,17 +5,17 @@ OUT = bin
 OBJECTS = main.o betterconsole.o piece.o
 
 consoletris: $(OBJECTS)
-	mkdir $(OUT)
+	mkdir -p $(OUT)
 	$(CC) -o $(OUT)/consoletris $(OBJECTS)
 
-main.o:
+main.o: $(SRC)/main.c
 	$(CC) -c $(SRC)/main.c -I./$(BCSRC)
 
-betterconsole.o:
+betterconsole.o: $(BCSRC)/betterconsole.c
 	$(CC) -c $(BCSRC)/betterconsole.c
 	
-piece.o:
-	$(CC) -c $(BCSRC)/piece.c
+piece.o: $(SRC)/piece.c
+	$(CC) -c $(SRC)/piece.c -I./$(BCSRC)
 
 clean:
 	rm -rf $(OUT)

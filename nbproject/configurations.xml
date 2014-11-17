@@ -6,7 +6,9 @@
     </df>
     <df root="src" name="1">
       <in>main.c</in>
+      <in>piece.c</in>
       <in>piece.h</in>
+      <in>pit.h</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -36,6 +38,22 @@
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath>bin/consoletris</executablePath>
+          <cTool>
+            <incDir>
+              <pElem>better-console</pElem>
+            </incDir>
+            <incFile>
+              <pElem>better-console</pElem>
+            </incFile>
+          </cTool>
+          <ccTool>
+            <incDir>
+              <pElem>better-console</pElem>
+            </incDir>
+            <incFile>
+              <pElem>better-console</pElem>
+            </incFile>
+          </ccTool>
         </makeTool>
       </makefileType>
       <item path="better-console/betterconsole.c" ex="false" tool="0" flavor2="0">
@@ -57,7 +75,11 @@
       </folder>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="src/piece.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="src/piece.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/pit.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

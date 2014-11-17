@@ -22,6 +22,12 @@ static Piece piece_models[NUM_PIECES] = {
     { 0,0,1,0,3,2,COLOR_T, {
                     " X ",
                     "XXX"}},
+    //PIECE_S
+    { 0,0,1,0,3,2,COLOR_S, {
+                        " XX","XX "}},
+    //PIECE_REVERSE_S
+    { 0,0,1,0,3,2,COLOR_REVERSE_S, {
+                        "XX "," XX"}},
 };
 int create_random_piece(Piece *piece, int exclude) {
     int numPiece;
@@ -35,13 +41,13 @@ int create_random_piece(Piece *piece, int exclude) {
 }
 
 // TODO: que no se repitan las piezas
-void draw_piece(Piece *piece) {
+void draw_piece(int or, int oc, Piece *piece) {
     int c,r;
     set_background(piece->color);
-    for(c = 0 ; c < piece->width ; c++) {
-        for(r = 0 ; r < piece->height ; r++) {
+    for(c = 0 ; c < piece->nCols ; c++) {
+        for(r = 0 ; r < piece->nRows ; r++) {
             if(piece->blocks[r][c] != ' ') {
-                set_position(piece->pRow+piece->offRow+r,piece->pCol+piece->offCol+c);
+                set_position(or+piece->pRow+piece->offRow+r,oc+piece->pCol+piece->offCol+c);
                 putchar(' ');
             }
         }
@@ -52,23 +58,30 @@ void draw_piece(Piece *piece) {
 void rotate_piece(int direction, Piece *piece) {
     char tmp;
     int x,y,t,dx,dy;
-    int s = piece->width > piece->height ? piece->width : piece->height;
-    Piece src = *piece;
-    for(x = 0 ; x < piece->width ; x++) {
-        for(y = 0 ; y < piece->height ; y++) {
-            dx = y;
-            dy = piece->width - x;
-            piece->blocks[dy][dx] = src.blocks[y][x];          
-        }       
+    int cos,sin;
+    if(direction > 0) {
+        sin = 1;
+        cos = 0;
+    } else {
+        sin = -1;
+        cos = 0;
     }
-    
-    t = piece->width;
-    piece->width = piece->height;
-    piece->height = t;
-    
-    t = piece->offCol;
-    piece->offCol = piece->offRow;
-    piece->offRow = t;
             
+    int s = piece->nCols > piece->nRows ? piece->nCols : piece->nRows;
+    
+    Piece src = *piece;
+    for(x = 0 ; x < piece->nCols ; x++) {
+        for(y = 0 ; y < piece->nRows ; y++) {
+            if(direction > 0) {
+                piece->blocks[x][piece->nRows-1-y] = src.blocks[y][x];
+            } else {
+                piece->blocks[piece->nCols-1-x][y] = src.blocks[y][x];
+            }
+        }               
+    }
+    piece->nCols = src.nRows;
+    piece->nRows = src.nCols;
+    piece->offCol = src.offRow;
+    piece->offRow = src.offCol;
 }
 

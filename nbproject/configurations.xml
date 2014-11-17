@@ -5,9 +5,12 @@
       <in>betterconsole.c</in>
     </df>
     <df root="src" name="1">
+      <in>game.c</in>
+      <in>game.h</in>
       <in>main.c</in>
       <in>piece.c</in>
       <in>piece.h</in>
+      <in>pit.c</in>
       <in>pit.h</in>
     </df>
     <logicalFolder name="ExternalFiles"
@@ -73,11 +76,17 @@
           </incDir>
         </cTool>
       </folder>
+      <item path="src/game.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/game.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/piece.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/piece.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/pit.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/pit.h" ex="false" tool="3" flavor2="0">
       </item>

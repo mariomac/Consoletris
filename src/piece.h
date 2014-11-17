@@ -21,6 +21,8 @@
 typedef struct {
     int pRow;
     int pCol;
+    int offRow; //offsets for drawing it
+    int offCol;
     int width;
     int height;
     int color;
@@ -41,6 +43,7 @@ int create_random_piece(Piece *piece, int exclude);
  * @param direction direction<0 rotates counterclockwise, direction>=0 rotates clockwise
  * @param piece
  */
+void rotate_piece(int direction, Piece *piece);
 
 void draw_piece(Piece *piece);
 

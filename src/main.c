@@ -15,12 +15,18 @@ int main() {
     clear_screen();
     int x,y,lastPiece = -1;
     Piece p;
-    for(y = 1 ; y < get_max_rows() ; y+=3) {
+    int c = 0;
+    for(y = 1 ; y < get_max_rows() ; y+=4) {
         for(x = 1 ; x < get_max_cols()-5 ; x+=5){
-            lastPiece = create_random_piece(&p, lastPiece);
+            if(c % 4 == 0) {
+                lastPiece = create_random_piece(&p, lastPiece);
+            } else {
+                rotate_piece(-1,&p);
+            }
             p.pCol=x;
             p.pRow=y;
             draw_piece(&p);
+            c++;
         }
     }
         

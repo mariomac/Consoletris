@@ -12,16 +12,22 @@ void clear_pit(Pit *pit) {
     }
 }
 
-int can_move(Pit *pit, Piece *piece, int rowInc, int colInc) {
+int can_move(Pit *pit, Piece *piece, int rowInc, int colInc, int rotation) {
     int r,c;
-    for(r = 0 ; r < piece->nRows ; r++ ) {
-        for(c = 0 ; c < piece->nCols ; r++) {
-            if(piece->blocks[r][c] != ' ') {
-                int nextCol = piece->pCol+piece->offCol+colInc;
-                int nextRow = piece->pRow+piece->offRow+rowInc;
+    Piece tst = *piece;
+    
+    if(rotation != 0) {
+        rotate_piece(rotation, &tst);
+    }
+
+    for(r = 0 ; r < tst.nRows ; r++ ) {
+        for(c = 0 ; c < tst.nCols ; c++) {
+            if(tst.blocks[r][c] != ' ') {
+                int nextCol = tst.pCol+tst.offCol+colInc;
+                int nextRow = tst.pRow+tst.offRow+rowInc;
                 if(nextCol < 0 || nextCol >= PIT_COLUMNS
                    || nextRow >= PIT_ROWS
-                   || pit->blocks[nextRow][nextCol] != BG_COLOR) {
+                   || tst.blocks[nextRow][nextCol] != BG_COLOR) {
                     return 0;
                 }
             }
@@ -63,8 +69,6 @@ void draw_pit(int topRow, int leftCol, Pit *pit) {
         set_position(topRow + PIT_ROWS - PIT_HIDDEN_ROWS, leftCol + c  );
         putchar(' ');
     }  
-    // draw moving piece
-    //draw_piece(topRow - PIT_HIDDEN_ROWS, leftCol+1, movingPiece);
 }
 
 

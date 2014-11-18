@@ -1,5 +1,6 @@
 #include "game.h"
 #include "betterconsole.h"
+#include <stdio.h>
 
 void get_new_piece(Game *game) {
     game->movingPiece = game->nextPiece;
@@ -23,8 +24,30 @@ void draw_game(Game *game) {
     draw_piece(PIT_POS_ROW + 2, PIT_POS_COL + PIT_COLUMNS + 5, &game->nextPiece);
 }
 
-void game_step(Game *game, long elapsedMs) {
-    
+void game_step(Game *game, int elapsedMs, int keyPressed) {
+    int rowInc = 0, colInc = 0, rotation = 0;
+    switch(keyPressed) {
+        case KEY_LEFT:
+            colInc = -1;
+            break;
+        case KEY_RIGHT:
+            colInc = 1;
+            break;
+        case KEY_UP:
+            rotation = -1;
+            break;
+        case KEY_DOWN:
+            rowInc = 1;
+            break;
+    }
+    if(can_move(&game->pit,&game->movingPiece,rowInc,colInc,rotation)) {
+        game->movingPiece.pRow += rowInc;
+        game->movingPiece.pCol += colInc; 
+        if(rotation != 0) {
+            rotate_piece(rotation,&game->movingPiece);
+        }
+        set_position(20,20); printf("(%d,%d) - %d                       ",game->movingPiece.pRow,game->movingPiece.pCol, keyPressed);
+    }
 }
 
 

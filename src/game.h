@@ -24,7 +24,7 @@ typedef struct {
 
 void start_game(Game *game);
 
-void game_step(Game *game, long elapsedMs);
+void game_step(Game *game, int elapsedMs, int keyPressed);
 
 void draw_game(Game *game);
 

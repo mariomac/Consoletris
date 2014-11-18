@@ -23,7 +23,7 @@ typedef struct {
 void clear_pit(Pit *pit);
 /**
  * Checks if the piece, according to its current position, can move to the 
- * relative position (+rowInc,+colInc).
+ * relative position (+rowInc,+colInc). It also checks if it can rotate (if rotation != 0)
  * 
  * @param pit
  * @param piece
@@ -31,7 +31,7 @@ void clear_pit(Pit *pit);
  * @param colInc
  * @return 0 if can not move, != 0 if can move
  */
-int can_move(Pit *pit, Piece *piece, int rowInc, int colInc);
+int can_move(Pit *pit, Piece *piece, int rowInc, int colInc, int rotation);
 
 void consolidate_piece(Pit *pit, Piece *piece);
 

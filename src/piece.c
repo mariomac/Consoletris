@@ -67,8 +67,7 @@ void rotate_piece(int direction, Piece *piece) {
         cos = 0;
     }
             
-    int s = piece->nCols > piece->nRows ? piece->nCols : piece->nRows;
-    
+    int s = piece->nCols > piece->nRows ? piece->nCols : piece->nRows;    
     Piece src = *piece;
     for(x = 0 ; x < piece->nCols ; x++) {
         for(y = 0 ; y < piece->nRows ; y++) {
@@ -78,7 +77,7 @@ void rotate_piece(int direction, Piece *piece) {
                 piece->blocks[piece->nCols-1-x][y] = src.blocks[y][x];
             }
         }               
-    }
+    }    
     piece->nCols = src.nRows;
     piece->nRows = src.nCols;
     piece->offCol = src.offRow;

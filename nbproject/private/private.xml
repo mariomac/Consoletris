@@ -13,9 +13,12 @@
             <file>file:/Users/mmacias/code/Consoletris/Makefile</file>
             <file>file:/Users/mmacias/code/Consoletris/src/piece.c</file>
             <file>file:/Users/mmacias/code/Consoletris/src/main.c</file>
+            <file>file:/Users/mmacias/code/Consoletris/src/game.c</file>
             <file>file:/Users/mmacias/code/Consoletris/src/pit.h</file>
             <file>file:/Users/mmacias/code/Consoletris/src/piece.h</file>
+            <file>file:/Users/mmacias/code/Consoletris/src/game.h</file>
             <file>file:/Users/mmacias/code/Consoletris/better-console/betterconsole.h</file>
+            <file>file:/Users/mmacias/code/Consoletris/src/pit.c</file>
         </group>
     </open-files>
 </project-private>

@@ -1,6 +1,7 @@
 #include "pit.h"
 #include "betterconsole.h"
 #include "piece.h"
+#include <stdio.h>
 
 void clear_pit(Pit *pit) {
     int r,c;
@@ -29,12 +30,23 @@ int can_move(Pit *pit, Piece *piece, int rowInc, int colInc) {
     return 1;
 }
 
-void draw_pit(Pit *pit, Piece *movingPiece) {
+void consolidate_piece(Pit *pit, Piece *piece) {
+    int r,c;
+    for(r = 0 ; r < piece->nRows ; r++) {
+        for(c = 0 ; c < piece->nCols ; c++) {
+            if(piece->blocks[r][c] != ' ') {
+                pit->blocks[piece->pRow+piece->offRow+r][piece->pCol+piece->offCol+c] = piece->color;
+            }
+        }
+    }
+} 
+
+void draw_pit(int topRow, int leftCol, Pit *pit) {
     int r,c;
     // draw pit
     for(r = PIT_HIDDEN_ROWS ; r < PIT_ROWS ; r++) {
         for(c = 0 ; c < PIT_COLUMNS ; c++ ) {
-            set_position(r+PIT_POS_ROW-PIT_HIDDEN_ROWS,c+PIT_POS_COL);
+            set_position(r+topRow-PIT_HIDDEN_ROWS,c+leftCol);
             set_background(pit->blocks[r][c]);
             putchar(' ');
         }        
@@ -42,17 +54,17 @@ void draw_pit(Pit *pit, Piece *movingPiece) {
     // draw pit margins
     set_background(PIT_MARGIN_COLOR);
     for(r = 0 ; r < PIT_ROWS-PIT_HIDDEN_ROWS ; r++) {
-        set_position(r+PIT_POS_ROW,PIT_POS_COL-1);
+        set_position(r+topRow,leftCol-1);
         putchar(' ');
-        set_position(r+PIT_POS_ROW,PIT_POS_COL+PIT_COLUMNS);
+        set_position(r+topRow,leftCol+PIT_COLUMNS);
         putchar(' ');        
     }
     for(c = -1 ; c <= PIT_COLUMNS ; c++) {
-        set_position(PIT_POS_ROW + PIT_ROWS - PIT_HIDDEN_ROWS, PIT_POS_COL + c );
+        set_position(topRow + PIT_ROWS - PIT_HIDDEN_ROWS, leftCol + c  );
         putchar(' ');
     }  
     // draw moving piece
-    draw_piece(PIT_POS_ROW - PIT_HIDDEN_ROWS, PIT_POS_COL, movingPiece);
+    //draw_piece(topRow - PIT_HIDDEN_ROWS, leftCol+1, movingPiece);
 }
 
 

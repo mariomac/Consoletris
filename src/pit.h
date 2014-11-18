@@ -10,9 +10,6 @@
 #define PIT_ROWS 22
 #define PIT_HIDDEN_ROWS 2
 
-#define PIT_POS_ROW 1
-#define PIT_POS_COL 3
-
 #define PIT_MARGIN_COLOR WHITE+BRIGHT
 
 typedef struct {
@@ -36,8 +33,9 @@ void clear_pit(Pit *pit);
  */
 int can_move(Pit *pit, Piece *piece, int rowInc, int colInc);
 
+void consolidate_piece(Pit *pit, Piece *piece);
 
-void draw_pit(Pit *pit, Piece *movingPiece);
+void draw_pit(int topRow, int leftCol, Pit *pit);
 
 #endif	/* __PIT_H */
 

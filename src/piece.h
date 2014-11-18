@@ -30,12 +30,12 @@ typedef struct {
     int offCol;
     int nCols;  // size of the rotated piece
     int nRows;
-    int color;
+    char color;
     char blocks[PIECE_MAX_SIDE][PIECE_MAX_SIDE];
 } Piece;
 
 /**
- * 
+ * The piece will be located at position (0+offRow, 0+offCol) by default
  * @param piece
  * @param exclude ID of piece to be excluded from the results (to avoid repeating twice
  * the same piece). -1 if you allow repeating pieces

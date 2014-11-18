@@ -2,7 +2,7 @@ CC = gcc
 BCSRC = better-console
 SRC = src
 OUT = bin
-OBJECTS = main.o betterconsole.o piece.o pit.o
+OBJECTS = main.o betterconsole.o piece.o pit.o game.o
 
 consoletris: $(OBJECTS)
 	mkdir -p $(OUT)

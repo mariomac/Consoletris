@@ -11,17 +11,16 @@
 #include "piece.h"
 #include "betterconsole.h"
 #include "pit.h"
+#include "game.h"
 
 int main() {
     clear_screen();
-    Pit pit;
-    clear_pit(&pit);
-    Piece piece;
-    create_random_piece(&piece,-1);
-    piece.pCol = (PIT_COLUMNS-PIECE_MAX_SIDE)/2;
-    piece.pRow = 0;
     
-    draw_pit(&pit,&piece);
+    Game theGame;
+    start_game(&theGame);
+    
+    draw_game(&theGame);
+    
             
     return 0;
 }

@@ -24,7 +24,7 @@ void draw_game(Game *game) {
     draw_piece(PIT_POS_ROW + 2, PIT_POS_COL + PIT_COLUMNS + 5, &game->nextPiece);
 }
 
-void game_step(Game *game, int elapsedMs, int keyPressed) {
+void game_step(Game *game, int elapsedMs, const int keyPressed) {    
     int rowInc = 0, colInc = 0, rotation = 0;
     switch(keyPressed) {
         case KEY_LEFT:
@@ -40,13 +40,17 @@ void game_step(Game *game, int elapsedMs, int keyPressed) {
             rowInc = 1;
             break;
     }
-    if(can_move(&game->pit,&game->movingPiece,rowInc,colInc,rotation)) {
+    if((rowInc != 0 || colInc != 0 || rotation != 0)
+            && can_move(&(game->pit),&(game->movingPiece),rowInc,colInc,rotation)) {
         game->movingPiece.pRow += rowInc;
-        game->movingPiece.pCol += colInc; 
-        if(rotation != 0) {
-            rotate_piece(rotation,&game->movingPiece);
+        game->movingPiece.pCol += colInc;
+        if (rotation != 0) {
+            rotate_piece(rotation, &game->movingPiece);
         }
-        set_position(20,20); printf("(%d,%d) - %d                       ",game->movingPiece.pRow,game->movingPiece.pCol, keyPressed);
+    }
+    if(!can_move(&game->pit,&game->movingPiece,1,0,0)) {
+        consolidate_piece(&game->pit,&game->movingPiece);
+        get_new_piece(game);
     }
 }
 

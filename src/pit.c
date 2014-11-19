@@ -1,6 +1,7 @@
 #include "pit.h"
 #include "betterconsole.h"
 #include "piece.h"
+#include "assert.h"
 #include <stdio.h>
 
 void clear_pit(Pit *pit) {
@@ -23,13 +24,13 @@ int can_move(Pit *pit, Piece *piece, int rowInc, int colInc, int rotation) {
     for(r = 0 ; r < tst.nRows ; r++ ) {
         for(c = 0 ; c < tst.nCols ; c++) {
             if(tst.blocks[r][c] != ' ') {
-                int nextCol = tst.pCol+tst.offCol+colInc;
-                int nextRow = tst.pRow+tst.offRow+rowInc;
-                if(nextCol < 0 || nextCol >= PIT_COLUMNS
-                   || nextRow >= PIT_ROWS
-                   || tst.blocks[nextRow][nextCol] != BG_COLOR) {
+                int nextRow = r+tst.pRow+tst.offRow+rowInc;
+                int nextCol = c+tst.pCol+tst.offCol+colInc;
+                if(nextCol < 0 || nextCol > PIT_COLUMNS-1
+                   || nextRow > PIT_ROWS
+                   || pit->blocks[nextRow][nextCol] != BG_COLOR) {                    
                     return 0;
-                }
+                }                
             }
         }
     }

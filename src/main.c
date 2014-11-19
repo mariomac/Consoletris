@@ -17,31 +17,33 @@ int main() {
     clear_screen();
     echo_off();
     cursor_off();
-    
+
     Game theGame;
     start_game(&theGame);
+
+    int keyPressed = 0, nzkey;
     
-    int keyPressed, nzkey;
     do {
         keyPressed = get_key_pressed();
-//        do {
-//            nzkey = get_key_pressed();
-//            if(nzkey != 0) {
-//                keyPressed = nzkey;
-//            }
-//        } while(nzkey != 0);
-        
+        //        do {
+        //            nzkey = get_key_pressed();
+        //            if(nzkey != 0) {
+        //                keyPressed = nzkey;
+        //            }
+        //        } while(nzkey != 0);
+
         game_step(&theGame, 50, keyPressed);
         draw_game(&theGame);
+        set_position(18,20); printf("%d                       ", keyPressed);        
         fflush(stdout);
-        empty_keyboard_buffer();
-        usleep(50000);        
-    } while(keyPressed != KEY_ESC);
-                       
+        //empty_keyboard_buffer();
+        usleep(50000);
+    } while (keyPressed != KEY_ESC);
+
     echo_on();
     cursor_on();
     clear_screen();
-    
+
     return 0;
 }
 

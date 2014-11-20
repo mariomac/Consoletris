@@ -34,7 +34,11 @@ int main() {
 
         game_step(&theGame, 50, keyPressed);
         draw_game(&theGame);
-        set_position(18,20); printf("%d                       ", keyPressed);        
+        set_position(18,20); printf("Key: %d                       ", keyPressed);
+        set_position(19,20); printf("Level: %d                       ", theGame.level);
+        set_position(20,20); printf("Speed: %d                       ", get_game_speed(&theGame));        
+        
+        
         fflush(stdout);
         //empty_keyboard_buffer();
         usleep(50000);

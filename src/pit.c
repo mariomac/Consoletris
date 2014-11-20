@@ -27,7 +27,7 @@ int can_move(Pit *pit, Piece *piece, int rowInc, int colInc, int rotation) {
                 int nextRow = r+tst.pRow+tst.offRow+rowInc;
                 int nextCol = c+tst.pCol+tst.offCol+colInc;
                 if(nextCol < 0 || nextCol > PIT_COLUMNS-1
-                   || nextRow > PIT_ROWS
+                   || nextRow > PIT_ROWS-1
                    || pit->blocks[nextRow][nextCol] != BG_COLOR) {                    
                     return 0;
                 }                

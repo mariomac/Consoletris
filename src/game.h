@@ -9,7 +9,7 @@
 
 #define MAX_SPEED_LEVEL 10
 #define MIN_FALL_SPEED_MS 1000
-#define MAX_FALL_SPEED_MS 200
+#define MAX_FALL_SPEED_MS 100
 
 typedef struct {
     int score;
@@ -27,6 +27,8 @@ void start_game(Game *game);
 void game_step(Game *game, int elapsedMs, int keyPressed);
 
 void draw_game(Game *game);
+
+int get_game_speed(Game *game);
 
 #endif	/* GAME_H */
 

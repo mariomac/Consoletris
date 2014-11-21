@@ -41,7 +41,8 @@ void consolidate_piece(Pit *pit, Piece *piece) {
     int r,c;
     for(r = 0 ; r < piece->nRows ; r++) {
         for(c = 0 ; c < piece->nCols ; c++) {
-            if(piece->blocks[r][c] != ' ') {
+            
+            if( piece->pRow+piece->offRow+r > 0 && piece->blocks[r][c] != ' ') {
                 pit->blocks[piece->pRow+piece->offRow+r][piece->pCol+piece->offCol+c] = piece->color;
             }
         }

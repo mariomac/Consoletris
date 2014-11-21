@@ -11,7 +11,11 @@
 #define MIN_FALL_SPEED_MS 1000
 #define MAX_FALL_SPEED_MS 100
 
+#define GAME_CONTINUE 0
+#define GAME_END 1
+
 typedef struct {
+    int lines;
     int score;
     int level;
     int fallSpeedMs;
@@ -24,7 +28,7 @@ typedef struct {
 
 void start_game(Game *game);
 
-void game_step(Game *game, int elapsedMs, int keyPressed);
+int game_step(Game *game, int elapsedMs, int keyPressed);
 
 void draw_game(Game *game);
 

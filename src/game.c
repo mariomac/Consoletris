@@ -10,6 +10,7 @@ void get_new_piece(Game *game) {
 }
 
 void start_game(Game *game) {
+    game->lines = 0;
     game->score = 0;
     game->nextPieceId = -1;
     game->level = 1;
@@ -34,7 +35,34 @@ int get_game_speed(Game *game) {
     }
 }
 
-void game_step(Game *game, int elapsedMs, const int keyPressed) {    
+/**
+ * removes complete lines
+ * @param game
+ * @return the number of removed lines
+ */
+int check_lines(Game *game) {
+    int linesToRemove = 0;
+    int lineBlocks;
+    int r,c;
+    for(r = PIT_ROWS - 1 ; r>=PIT_HIDDEN_ROWS ; r-- ) {
+        lineBlocks = 0;
+        for(c = 0 ; c < PIT_COLUMNS ; c++) {
+            if(linesToRemove > 0) {
+                game->pit.blocks[r+linesToRemove][c] = game->pit.blocks[r][c];
+            }
+            if(game->pit.blocks[r][c] != BG_COLOR) {
+                lineBlocks++;
+            }
+        }
+        if(lineBlocks == c) {
+            linesToRemove++;
+        }
+    }
+    
+    return linesToRemove;  
+}
+
+int game_step(Game *game, int elapsedMs, const int keyPressed) {    
     int colInc = 0, rotation = 0;
     game -> timeToMoveDown -= elapsedMs;
     switch(keyPressed) {
@@ -69,9 +97,15 @@ void game_step(Game *game, int elapsedMs, const int keyPressed) {
             game->movingPiece.pRow++;
         } else {
             consolidate_piece(&game->pit,&game->movingPiece);
+            game->lines += check_lines(game);
             get_new_piece(game);
+            int cm = can_move(&game->pit,&game->movingPiece,0,0,0);
+            if(cm == 0) {
+                return GAME_END;
+            }
         }
     }
+    return GAME_CONTINUE;
 }
 
 

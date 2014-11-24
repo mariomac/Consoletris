@@ -80,7 +80,7 @@ void show_start_screen() {
             } else {
                 bright = 0.5;
                 if(r > 0 && txt[r-1][c] == 'W') {
-                    bright -= 0.15;
+                    bright -= 0.13;
                 }
                 if(c > 0 && txt[r][c-1] == 'W') {
                     bright -= 0.15;

@@ -14,6 +14,9 @@
 #define GAME_CONTINUE 0
 #define GAME_END 1
 
+#define CONSOLE_ROWS 23
+#define CONSOLE_COLUMNS 80
+
 typedef struct {
     int lines;
     int score;

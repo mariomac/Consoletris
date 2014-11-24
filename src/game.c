@@ -20,6 +20,17 @@ void start_game(Game *game) {
 }
 
 void draw_game(Game *game) {
+    
+    double r,c;
+    set_position(1,1);
+    for(r = 0 ; r < CONSOLE_ROWS ; r++) {
+        for(c = 0 ; c < CONSOLE_COLUMNS ; c++) {
+            set_background(gray((r+c)/(CONSOLE_ROWS+CONSOLE_COLUMNS)));
+            putchar(' ');
+        }
+        putchar('\n');
+    }
+    
     draw_pit(PIT_POS_ROW, PIT_POS_COL, &game->pit);
     draw_piece(PIT_POS_ROW - PIT_HIDDEN_ROWS, PIT_POS_COL, &game->movingPiece);
     

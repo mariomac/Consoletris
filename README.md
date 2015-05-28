@@ -1,6 +1,8 @@
 Consoletris
 ===========
 
+![Screenshot](shot.png "Screenshot")
+
 Tetris clone for the ANSI console as example for the programming lectures I teach
 at the [Universitat Politècnica de Catalunya](http://www.upc.edu).
 

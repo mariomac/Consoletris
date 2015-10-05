@@ -1,6 +1,7 @@
 Consoletris
 ===========
 
+![Welcome Screen](shot2.png "Welcome Screen")
 ![Screenshot](shot.png "Screenshot")
 
 Tetris clone for the ANSI console as example for the programming lectures I teach
